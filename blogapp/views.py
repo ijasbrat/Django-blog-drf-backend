@@ -12,8 +12,6 @@ from rest_framework.pagination import PageNumberPagination
 class BlogListPagination(PageNumberPagination):
     page_size= 3
 
-
-# Create your views here.
 @api_view(["GET"])
 def blog_list(request):
     blogs = Blog.objects.all()
@@ -71,17 +69,6 @@ def create_blog(request):
         return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-# @api_view(["POST"])
-# def create_blog(request):
-#     serializer = BlogSerializer(data=request.data)
-#     if serializer.is_valid():
-#         serializer.save()
-#         return Response(serializer.data)
-#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
-
 @api_view(["PUT"])
 @permission_classes([IsAuthenticated])
 def update_blog(request, pk):
@@ -94,15 +81,6 @@ def update_blog(request, pk):
         serializer.save()
         return Response(serializer.data)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-# @api_view(["PUT"])
-# def update_blog(request, pk):
-#     blog = Blog.objects.get(id=pk)
-#     serializer = BlogSerializer(blog, data=request.data)
-#     if serializer.is_valid():
-#         serializer.save()
-#         return Response(serializer.data)
-#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["POST"])
@@ -143,12 +121,3 @@ def get_user(request, email):
     except User.DoesNotExist:
         return Response({"detail": "User not found."}, status=status.HTTP_404_NOT_FOUND)
     
-
-
-
-
-
-# Facebook: https://www.facebook.com/sampleusername
-# Instagram: https://www.instagram.com/sampleusername
-# YouTube: https://www.youtube.com/user/sampleusername
-# Twitter (now X): https://twitter.com/sampleusername
