@@ -2,10 +2,6 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import CustomUser, Blog
 from django.utils.translation import gettext_lazy as _
-
-# Register your models here.
-
-
 class CustomUserAdmin(UserAdmin):
     list_display = ("username", "first_name", "last_name", "email", "job_title", "profile_picture", "profile_picture_url")
     
