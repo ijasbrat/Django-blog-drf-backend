@@ -3,10 +3,6 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.utils.text import slugify
 from django.utils import timezone
-
-# Create your models here.
-
-
 class CustomUser(AbstractUser):
     bio = models.TextField(blank=True, null=True)
     profile_picture = models.ImageField(upload_to="profile_img", blank=True, null=True)
@@ -18,10 +14,6 @@ class CustomUser(AbstractUser):
     instagram = models.URLField(max_length=255, blank=True, null=True)
     twitter = models.URLField(max_length=255, blank=True, null=True)
     linkedin = models.URLField(max_length=255, blank=True, null=True)
-
-
-
-
     def __str__(self):
         return self.username
     
